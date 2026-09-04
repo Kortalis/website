@@ -144,6 +144,10 @@ header{
 .cards{display:grid;gap:20px}
 .card{
   position:relative;
+  display:block;
+  color:inherit;
+  text-decoration:none;
+  cursor:pointer;
   padding:34px 36px 28px;
   border:1px solid var(--card-border);
   border-radius:var(--radius);
@@ -155,8 +159,12 @@ header{
 }
 .card:hover{
   transform:translateY(-2px);
-  border-color:rgba(255,255,255,.23);
+  border-color:rgba(213,184,152,.44);
   box-shadow:0 24px 70px rgba(0,0,0,.24);
+}
+.card:focus-visible{
+  outline:2px solid var(--accent-soft);
+  outline-offset:5px;
 }
 .card-top{
   display:flex;
@@ -241,14 +249,21 @@ header{
   font-weight:700;
 }
 .tool-link .arrow{
+  width:16px;
+  height:16px;
   display:inline-block;
   color:var(--accent);
-  font-size:1.35rem;
-  line-height:1;
-  transform:translateY(-1px);
-  transition:transform .18s ease;
+  flex:0 0 16px;
+  transform:translateY(1px);
+  transition:transform .18s ease,opacity .18s ease;
 }
-.tool-link:hover .arrow{transform:translate(2px,-3px)}
+.tool-link .arrow svg{
+  width:100%;
+  height:100%;
+  display:block;
+  overflow:visible;
+}
+.tool-link:hover .arrow,.card:hover .tool-link .arrow{transform:translate(2px,-2px);opacity:1}
 .ad{
   color:#878078;
   font-size:.73rem;
@@ -327,7 +342,7 @@ a:focus-visible{outline:2px solid var(--accent-soft);outline-offset:5px;border-r
   .tags li{padding:5px 10px;font-size:.67rem}
   .card-foot{margin-top:18px;padding-top:17px;gap:12px}
   .tool-link{font-size:.88rem;gap:10px}
-  .tool-link .arrow{font-size:1.20rem}
+  .tool-link .arrow{width:15px;height:15px;flex-basis:15px}
   .ad{font-size:.66rem}
 
   .site-footer{margin-top:78px;padding-bottom:40px}
@@ -379,7 +394,7 @@ a:focus-visible{outline:2px solid var(--accent-soft);outline-offset:5px;border-r
   <section class="tools wrap" aria-label="Research tools">
     <div class="cards">
 
-      <article class="card">
+      <a class="card" href="https://finviz.com/" target="_blank" rel="sponsored noopener noreferrer" aria-label="Visit Finviz">
         <div class="card-top"><span>01</span><span>Ideas &amp; Screening</span></div>
         <h2>FINVIZ</h2>
         <p class="card-kicker">Ideas + Market Screen</p>
@@ -391,14 +406,14 @@ a:focus-visible{outline:2px solid var(--accent-soft);outline-offset:5px;border-r
           <li>Ideas</li><li>Screening</li><li>Fundamentals</li><li>Market overview</li>
         </ul>
         <div class="card-foot">
-          <a class="tool-link" href="https://finviz.com/" target="_blank" rel="sponsored noopener noreferrer">
-            Visit Finviz <span class="arrow" aria-hidden="true">↗</span>
-          </a>
+          <span class="tool-link">
+            Visit Finviz <span class="arrow" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4.5 11.5L11.5 4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/><path d="M6.25 4.5H11.5V9.75" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          </span>
           <span class="ad">Affiliate link · Ad</span>
         </div>
-      </article>
+      </a>
 
-      <article class="card">
+      <a class="card" href="https://seekingalpha.com/" target="_blank" rel="sponsored noopener noreferrer" aria-label="Visit Seeking Alpha">
         <div class="card-top"><span>02</span><span>Quant &amp; Research</span></div>
         <h2>Seeking Alpha <span class="alpha">α</span></h2>
         <p class="card-kicker">Quant + Company Research</p>
@@ -410,14 +425,14 @@ a:focus-visible{outline:2px solid var(--accent-soft);outline-offset:5px;border-r
           <li>Quant</li><li>Financials</li><li>Earnings</li><li>Revisions</li>
         </ul>
         <div class="card-foot">
-          <a class="tool-link" href="https://seekingalpha.com/" target="_blank" rel="sponsored noopener noreferrer">
-            Visit Seeking Alpha <span class="arrow" aria-hidden="true">↗</span>
-          </a>
+          <span class="tool-link">
+            Visit Seeking Alpha <span class="arrow" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4.5 11.5L11.5 4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/><path d="M6.25 4.5H11.5V9.75" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          </span>
           <span class="ad">Affiliate link · Ad</span>
         </div>
-      </article>
+      </a>
 
-      <article class="card">
+      <a class="card" href="https://www.tradingview.com/" target="_blank" rel="sponsored noopener noreferrer" aria-label="Visit TradingView">
         <div class="card-top"><span>03</span><span>Chart Analysis</span></div>
         <h2>TradingView</h2>
         <p class="card-kicker">Chart Analysis</p>
@@ -429,12 +444,12 @@ a:focus-visible{outline:2px solid var(--accent-soft);outline-offset:5px;border-r
           <li>Charts</li><li>Trend</li><li>Volume</li><li>Price action</li>
         </ul>
         <div class="card-foot">
-          <a class="tool-link" href="https://www.tradingview.com/" target="_blank" rel="sponsored noopener noreferrer">
-            Visit TradingView <span class="arrow" aria-hidden="true">↗</span>
-          </a>
+          <span class="tool-link">
+            Visit TradingView <span class="arrow" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4.5 11.5L11.5 4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/><path d="M6.25 4.5H11.5V9.75" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          </span>
           <span class="ad">Affiliate link · Ad</span>
         </div>
-      </article>
+      </a>
 
     </div>
   </section>
